@@ -1,0 +1,8 @@
+<h1>ISS Astronauts</h1>
+<h3>Total Astronauts on Board: <%= @total_astronaut_count %> </h3><br>
+
+<ol>
+<% @astronaut_names.each do |astro| %> 
+    <li> <%= astro %> </li><br>
+    <% end %>
+</ol>
