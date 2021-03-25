@@ -1,5 +1,7 @@
 {
   "name": "iss_tracker",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/ujs": "^6.1.3"
+  }
 }

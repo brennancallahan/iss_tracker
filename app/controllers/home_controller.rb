@@ -30,4 +30,12 @@ class HomeController < ApplicationController
     @iss_data["number"]
   end
 
+  def search
+    @results = params[:search]
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
