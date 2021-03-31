@@ -1,1 +1,1 @@
-$('#search').html("<%= escape_javascript(render partial: 'search', locals: { results: @results, response: @response } ) %>");
+$('#search').html("<%= escape_javascript(render partial: 'search', locals: { location_data: @location_data, lat: @lat, lon: @lon, iss_pass_data: @iss_pass_data, duration: @duration, risetime: @risetime } ) %>");
