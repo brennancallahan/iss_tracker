@@ -73,7 +73,7 @@ class HomeController < ApplicationController
   end
 
   def time_parse(time)
-    Time.at(time).to_datetime
+    Time.at(time).utc.to_datetime
   end
 
 end
