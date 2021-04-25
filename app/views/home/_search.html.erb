@@ -5,5 +5,5 @@
     <p>Latitude: <%= lat %></p>
     <p>Longitude: <%= lon %></p>
     <p>Next ISS Pass Over Your Location:
-    Risetime: <%= risetime %> Duration: <%= duration %> seconds</p>
+    <%= risetime.strftime("%a, %b %d starting at %H:%M:%S %p UTC") %>, lasting approximately <%= duration %> seconds.</p>
 </div>
