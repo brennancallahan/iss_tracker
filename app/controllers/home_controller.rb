@@ -4,12 +4,10 @@ class HomeController < ApplicationController
 
   def index
     @iss_data = call_api
-    @astronaut_names = astronaut_names
-    @total_astronaut_count = total_astronaut_count
   end
 
   def call_api
-    {"message"=>"success",
+    process_response_data({"message"=>"success",
     "number"=>7,
     "people"=>
       [{"craft"=>"ISS", "name"=>"Sergey Ryzhikov"},
@@ -18,16 +16,19 @@ class HomeController < ApplicationController
       {"craft"=>"ISS", "name"=>"Mike Hopkins"},
       {"craft"=>"ISS", "name"=>"Victor Glover"},
       {"craft"=>"ISS", "name"=>"Shannon Walker"},
-      {"craft"=>"ISS", "name"=>"Soichi Noguchi"}]}
-    # HTTParty.get('http://api.open-notify.org/astros.json')
+      {"craft"=>"ISS", "name"=>"Soichi Noguchi"}]})
+    # response_data = HTTParty.get('http://api.open-notify.org/astros.json')
+    # process_response_data(response_data)
   end
 
-  def astronaut_names
-    names = @iss_data["people"].map { |p| p["name"] }
-  end
-
-  def total_astronaut_count
-    @iss_data["number"]
+  def process_response_data(response_data)
+    if response_data["message"] == "success"
+      @astronaut_names = response_data["people"].map { |p| p["name"] }
+      @total_astronaut_count = response_data["number"]
+    else
+      @astronaut_names = ["No name data is available at this time"]
+      @total_astronaut_count = ["No count data is available at this time"]
+    end
   end
 
   def search
